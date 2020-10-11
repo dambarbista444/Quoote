@@ -75,7 +75,7 @@ class FavoriteListViewController: UIViewController,UITableViewDelegate,UITableVi
             tableView.reloadData()
         }
         
-        UserDefault.saveFavorite() // this method will update and save the changes on tableview and favoritlist
+        UserDefault.saveFavorite() // this method will update and save the changes on tableview and favoritelist
     }
 }
 

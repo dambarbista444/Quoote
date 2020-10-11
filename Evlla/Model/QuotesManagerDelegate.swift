@@ -8,7 +8,7 @@
 
 import Foundation
 
-/* creating this protocol to hande the updates form third party API and error and implementd only on author
+/* creating this protocol to hande the updates fromm third party API and error and implementd only on author
 quotes view controller */
 
 protocol QuotesManagerDelegate {

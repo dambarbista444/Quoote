@@ -29,7 +29,7 @@ class PopularViewController: UIViewController {
         super.viewDidLoad()
         
         NotificationCenter.sendMotivationQuotes(with: updatePopularQuotes())
-        favoriteList = UserDefault.readFavoite()
+        favoriteList = UserDefault.saveFavoritelist()
         configurePageVC()
         Favorite.showHeartFill(on: favoriteButton, of: currentQuotesIndex)
         
@@ -75,7 +75,6 @@ class PopularViewController: UIViewController {
         UserDefault.saveFavorite() // this method will save the quotes in favoritelist
         
     }
-    
     
     
     // MARK:- PageViewControll / Scroll

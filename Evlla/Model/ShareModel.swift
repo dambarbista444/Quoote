@@ -11,7 +11,7 @@ import UIKit
 
 // this method is created to share the quotes from the application
 /* first i used view = UIView() then .sourceView = view, but didn't work as expected on ipad then
- changing to (sourceView: UIButton) now working as expected to all devices  */
+ changing to (sourceView: UIButton) now working as expected on all devices  */
 
 struct ShareModel {
     

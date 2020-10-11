@@ -19,7 +19,6 @@
 		E139382A24BD208F0054F31B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E139382924BD208F0054F31B /* AppDelegate.swift */; };
 		E139382C24BD208F0054F31B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E139382B24BD208F0054F31B /* SceneDelegate.swift */; };
 		E139383624BD20910054F31B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E139383424BD20910054F31B /* LaunchScreen.storyboard */; };
-		E139384224BD21B40054F31B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E139384124BD21B40054F31B /* Assets.xcassets */; };
 		E139384D24BD2CFA0054F31B /* QuotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E139384C24BD2CFA0054F31B /* QuotesViewController.swift */; };
 		E139384F24BD2D470054F31B /* AuthorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E139384E24BD2D470054F31B /* AuthorViewController.swift */; };
 		E139385124BD2D580054F31B /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E139385024BD2D580054F31B /* FavoriteListViewController.swift */; };
@@ -29,6 +28,7 @@
 		E144C27024C153DF0089287D /* ShareModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E144C26F24C153DF0089287D /* ShareModel.swift */; };
 		E144C27224C15DA40089287D /* PopularDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E144C27124C15DA40089287D /* PopularDataModel.swift */; };
 		E144C27424C1680C0089287D /* AlertUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E144C27324C1680C0089287D /* AlertUser.swift */; };
+		E188FD5C24C881EE000449D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E188FD5B24C881EE000449D8 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,7 +46,6 @@
 		E139382B24BD208F0054F31B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E139383524BD20910054F31B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E139383724BD20910054F31B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E139384124BD21B40054F31B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../Evlla/Evlla/Assets.xcassets; sourceTree = "<group>"; };
 		E139384C24BD2CFA0054F31B /* QuotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotesViewController.swift; sourceTree = "<group>"; };
 		E139384E24BD2D470054F31B /* AuthorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorViewController.swift; sourceTree = "<group>"; };
 		E139385024BD2D580054F31B /* FavoriteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +55,7 @@
 		E144C26F24C153DF0089287D /* ShareModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareModel.swift; sourceTree = "<group>"; };
 		E144C27124C15DA40089287D /* PopularDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDataModel.swift; sourceTree = "<group>"; };
 		E144C27324C1680C0089287D /* AlertUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUser.swift; sourceTree = "<group>"; };
+		E188FD5B24C881EE000449D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +113,7 @@
 				E139384B24BD2CCA0054F31B /* Model */,
 				E1031E1E24BD3F4B0094A4A9 /* View */,
 				E1031E1F24BD3FA10094A4A9 /* Controller */,
-				E139384124BD21B40054F31B /* Assets.xcassets */,
+				E188FD5B24C881EE000449D8 /* Assets.xcassets */,
 				E139383424BD20910054F31B /* LaunchScreen.storyboard */,
 				E139383724BD20910054F31B /* Info.plist */,
 			);
@@ -166,7 +166,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Dambar Bista";
 				TargetAttributes = {
 					E139382524BD208E0054F31B = {
@@ -199,7 +199,7 @@
 			files = (
 				E1031E1D24BD3F2D0094A4A9 /* Main.storyboard in Resources */,
 				E139383624BD20910054F31B /* LaunchScreen.storyboard in Resources */,
-				E139384224BD21B40054F31B /* Assets.xcassets in Resources */,
+				E188FD5C24C881EE000449D8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +272,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -332,6 +333,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -365,6 +367,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = TU297MT8N2;
 				INFOPLIST_FILE = Evlla/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -383,6 +386,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = TU297MT8N2;
 				INFOPLIST_FILE = Evlla/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

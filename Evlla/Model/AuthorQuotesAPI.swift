@@ -48,7 +48,7 @@ class AuthorQuotesAPI {
         
     }
     
-    // decoding the data from api to native 
+    // decoding the data from api to native swift
     
     func parseJSON(data: Data) -> String? {
         

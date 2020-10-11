@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-// this method will hande user favorites to fill and unfill he heart button
+// this method will hande user favorites to fill and unfill he heart button 
 
 struct Favorite {
     

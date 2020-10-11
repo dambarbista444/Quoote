@@ -17,27 +17,27 @@ struct NotificationCenter {
         
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-            if granted {
-                print("yay")
-            } else if error != nil {
+            
+            if error != nil {
                 print("Access Denied")
             }
         }
         
         // Content of Notification
-        let content     = UNMutableNotificationContent()
-        content.title   = "Morning Motivation"
-        content.body    = quotes
+        let content             = UNMutableNotificationContent()
+        content.title           = "Morning Motivation"
+        content.body            = quotes
         
         //  Date and Time to send notification
+        var dateComponent       = DateComponents()
+        dateComponent.hour      = 6
+        dateComponent.minute    = 00
         
-        let date            = Date().addingTimeInterval(10)
-        let dateComponent   = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+        // sending triger
+        let trigger             = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
         
-        let trigger         = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
-        
-        let uuidString      = UUID().uuidString
-        let request         = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+        let uuidString          = UUID().uuidString
+        let request             = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
         
         center.add(request) { (error) in
             

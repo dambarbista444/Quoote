@@ -25,7 +25,7 @@ class AuthorViewController: UIViewController {
         getQuotes.requestQuotes()
         getQuotes.quotesManagerDelegate = self
         configureSwipe()
-        favoriteList = UserDefault.readFavoite()
+        favoriteList = UserDefault.saveFavoritelist()
     
     }
     

@@ -34,7 +34,6 @@
                                     <segment title="Popular"/>
                                     <segment title="Authors"/>
                                 </segments>
-                                <color key="selectedSegmentTintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <action selector="segmentDidChange:" destination="aSO-BM-f7E" eventType="valueChanged" id="xVw-EO-4aR"/>
                                 </connections>
@@ -73,7 +72,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="S8-Wallpaper-1080x1920" translatesAutoresizingMaskIntoConstraints="NO" id="uAO-um-DyZ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popularImage" translatesAutoresizingMaskIntoConstraints="NO" id="uAO-um-DyZ">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a41-Wx-RFe" userLabel="Favorite Folder">
@@ -245,7 +244,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="andy-holmes-sliNTaUWgX8-unsplash" translatesAutoresizingMaskIntoConstraints="NO" id="QcS-zg-QIe">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="authorImage" translatesAutoresizingMaskIntoConstraints="NO" id="QcS-zg-QIe">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYk-Cx-nxk" userLabel="FavoriteFolder">
@@ -338,10 +337,10 @@
         <segue reference="d2m-sh-mQA"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="S8-Wallpaper-1080x1920" width="1080" height="1920"/>
-        <image name="andy-holmes-sliNTaUWgX8-unsplash" width="3368" height="4210"/>
+        <image name="authorImage" width="3368" height="4210"/>
         <image name="folder" catalog="system" width="128" height="95"/>
         <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="popularImage" width="1080" height="1920"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
     </resources>
 </document>

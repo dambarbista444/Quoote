@@ -23,7 +23,7 @@ struct UserDefault {
     }
     
      // reading userDefults
-    static func readFavoite() -> [String] {
+    static func saveFavoritelist() -> [String] {
         
         let defaults = UserDefaults.standard
     
