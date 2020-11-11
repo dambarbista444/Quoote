@@ -27,17 +27,16 @@ struct NotificationCenter {
         let content             = UNMutableNotificationContent()
         content.title           = "Morning Motivation"
         content.body            = quotes
-        
+
         //  Date and Time to send notification
         var dateComponent       = DateComponents()
-        dateComponent.hour      = 6
-        dateComponent.minute    = 00
+        dateComponent.hour      = 6 // 6: 01 am
+        dateComponent.minute    = 01
+        center.removeAllPendingNotificationRequests()
         
         // sending triger
         let trigger             = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
-        
-        let uuidString          = UUID().uuidString
-        let request             = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+        let request             = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         
         center.add(request) { (error) in
             

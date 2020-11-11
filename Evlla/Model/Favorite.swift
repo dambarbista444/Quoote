@@ -27,7 +27,7 @@ struct Favorite {
     
     static func showHeartFill(on favoriteButton: UIButton, of currentIndex: Int ) {
         
-        if favoriteList.contains(PopularQuotesData.getFamousQuotes(from: currentIndex)) {
+        if favoriteList.contains(PopularQuotesModel.getPopularQuotes(from: currentIndex)) {
             
             favoriteButton.setBackgroundImage(UIImage(systemName: Identifier.heartFill), for: .normal)
             
