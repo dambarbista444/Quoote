@@ -1,5 +1,5 @@
 # Evlla
-![6](https://user-images.githubusercontent.com/60531116/106701497-c2b39600-65b4-11eb-891d-166258a14267.png)
+![How i came up with this app idea_](https://user-images.githubusercontent.com/60531116/107157151-85eaf480-6950-11eb-9bec-52daf0ad9d3e.png)
 
 ![1](https://user-images.githubusercontent.com/60531116/106701524-d0691b80-65b4-11eb-9c16-d1931e9060f4.png)
 
