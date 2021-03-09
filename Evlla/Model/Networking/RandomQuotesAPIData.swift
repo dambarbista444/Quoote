@@ -8,14 +8,12 @@
 
 import Foundation
 
- // struct for API
-// storing the JSON data from third party to convert into native swift
+ // storing the JSON data from third party to convert into native swift
 
 struct RandomQuotesAPIData: Codable {
     
-    var message: String
+    var content: String
     var author: String
-    
 }
 
 

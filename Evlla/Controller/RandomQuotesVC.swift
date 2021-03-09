@@ -12,21 +12,25 @@ import UIKit
 class RandomQuotesVC: UIViewController {
     
     // MARK:- IBOutlets and Properties
-
+    
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var randomQuotesLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     
-    var randomQuotes = RandomQuotesAPIModel()
+    var randomQuotes = RandomQuotesModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        randomQuotes.requestRandomQuotes()
-        randomQuotes.quotesManagerDelegate = self
+        randomQuotes.fetchRandomQuotes()
+        randomQuotes.randomQuotesManager = self
         configureSwipe()
         favoriteList = UserDefault.saveFavoritelist()
-    
+        
+        // If there is no internet connection or other issue
+        randomQuotesLabel.text = "Something went wrong!. Either it's internet connection or fetching issue. Thank you"
+        randomQuotesLabel.textColor = .yellow
+        
     }
     
     // MARK:- UISwipeGestureRecognizer
@@ -46,12 +50,12 @@ class RandomQuotesVC: UIViewController {
     @objc func handleSwipe(swipe: UISwipeGestureRecognizer) {
         if swipe.state == .ended {
             switch swipe.direction {
-                
+            
             case .left:
                 Favorite.showAuthorFavoriteHeartFill(on: favoriteButton, of: randomQuotesLabel.text!)
-                randomQuotes.requestRandomQuotes()
+                randomQuotes.fetchRandomQuotes()
                 Favorite.heartUnfill(on: favoriteButton)
-            
+                
             case .right:
                 AlertUser.alert(on: self)
             default:
@@ -88,8 +92,6 @@ class RandomQuotesVC: UIViewController {
         
         UserDefault.saveFavorite()
     }
-    
-   
 }
 
 
@@ -98,16 +100,18 @@ class RandomQuotesVC: UIViewController {
 
 extension RandomQuotesVC: RandomQuotesManagerDelegate {
     
-    func didUpdateWithQuotes(update: String) {
+    func didUpdateWithQuotes(randomQuotes: String) {
         
         DispatchQueue.main.async {
-            self.randomQuotesLabel.text = update
             
+            self.randomQuotesLabel.text = randomQuotes
+            self.randomQuotesLabel.textColor = .white
         }
     }
     
+    
     func didFailWithError(error: Error) {
-        print(" this is error from author Quotes API")
+        print(" this is error from Random Quotes API \(error)")
     }
     
 }

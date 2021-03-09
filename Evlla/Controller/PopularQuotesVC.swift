@@ -82,7 +82,6 @@ class PopularQuotesVC: UIViewController {
     
     func configurePageVC() {
         
-        
         guard  let pageVC = storyboard?.instantiateViewController(withIdentifier: String(describing: RandomPageVC.self)) as? RandomPageVC else { return }
         
         pageVC.delegate     = self
@@ -93,9 +92,8 @@ class PopularQuotesVC: UIViewController {
         
         guard let startingVC = popularQuotesVC(index: currentQuotesIndex) else { return }
         pageVC.setViewControllers([startingVC], direction: .forward, animated: true, completion: nil)
-        
-        
     }
+    
     
     // MARK:- PopularQuoteVC
     // this method will run the qotes on popular Quotes when scroll

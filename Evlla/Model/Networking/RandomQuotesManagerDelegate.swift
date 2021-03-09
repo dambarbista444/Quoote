@@ -13,7 +13,7 @@ quotes view controller */
 
 protocol RandomQuotesManagerDelegate {
     
-    func didUpdateWithQuotes(update: String)
+    func didUpdateWithQuotes(randomQuotes: String)
     func didFailWithError(error: Error)
     
 }
