@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 
 class RandomQuotesVC: UIViewController {
@@ -18,6 +19,7 @@ class RandomQuotesVC: UIViewController {
     @IBOutlet weak var favoriteButton: UIButton!
     
     var randomQuotes = RandomQuotesModel()
+    var userLikeQuotes = false 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +27,7 @@ class RandomQuotesVC: UIViewController {
         randomQuotes.fetchRandomQuotes()
         randomQuotes.randomQuotesManager = self
         configureSwipe()
-        favoriteList = UserDefault.saveFavoritelist()
-        
-        // If there is no internet connection or other issue
-        randomQuotesLabel.text = "Something went wrong!. Either it's internet connection or fetching issue. Thank you"
-        randomQuotesLabel.textColor = .yellow
+        showNetworkErrorMessage()
         
     }
     
@@ -44,6 +42,15 @@ class RandomQuotesVC: UIViewController {
         view.addGestureRecognizer(rightSwipe)
         view.addGestureRecognizer(leftSwipe)
         
+        
+        
+    }
+    
+    // If there is no internet connection or other issue
+    func showNetworkErrorMessage() {
+        
+        randomQuotesLabel.text = "Something went wrong!. Either it's internet connection or fetching issue. Thank you"
+        randomQuotesLabel.textColor = .yellow
     }
     
     
@@ -52,9 +59,10 @@ class RandomQuotesVC: UIViewController {
             switch swipe.direction {
             
             case .left:
-                Favorite.showAuthorFavoriteHeartFill(on: favoriteButton, of: randomQuotesLabel.text!)
+                Icons.showAuthorFavoriteHeartFill(on: favoriteButton, of: randomQuotesLabel.text!)
                 randomQuotes.fetchRandomQuotes()
-                Favorite.heartUnfill(on: favoriteButton)
+                userLikeQuotes = false
+                Icons.setUnfavoriteIcon(on: favoriteButton)
                 
             case .right:
                 AlertUser.alert(on: self)
@@ -77,21 +85,18 @@ class RandomQuotesVC: UIViewController {
     
     @IBAction func favoritePressed(_ sender: UIButton) {
         
-        let userLikeQuotes = true
+        userLikeQuotes = !userLikeQuotes
         
-        if userLikeQuotes {
-            Favorite.heartUnfill(on: favoriteButton)
-            if let index = favoriteList.firstIndex(of: randomQuotesLabel.text!) {
-                favoriteList.remove(at: index)
-                
-            } else {
-                favoriteList.append(randomQuotesLabel.text!)
-                Favorite.heartFill(on: favoriteButton)
-            }
+        if userLikeQuotes == true {
+            CoreDataModel.saveQuotes(with: randomQuotesLabel.text!)
+            Icons.setFavoriteIcon(on: favoriteButton)
+            
+        } else {
+            CoreDataModel.removeQuotes()
+            Icons.setUnfavoriteIcon(on: favoriteButton)
         }
-        
-        UserDefault.saveFavorite()
     }
+    
 }
 
 

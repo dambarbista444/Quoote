@@ -17,7 +17,7 @@ class RandomQuotesModel {
         let url = "https://api.quotable.io/random"
         let stringUrl = URL(string: url)!
         
-        let task = URLSession.shared.dataTask(with: stringUrl) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: stringUrl) { (data, _, error) in
             
             if let safeData = data {
                 if let decodedQuotes = self.parseJSON(data: safeData) {

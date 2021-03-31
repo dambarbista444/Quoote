@@ -13,7 +13,7 @@ import Foundation
 
 struct PopularQuotesModel {
     
-    static let data = [
+    static let quotesList = [
 
         PopularQuotesData(quotes: "If you aren’t big enough to stand criticism, you’re too small to be praised. - Earl Deason"),
         PopularQuotesData(quotes: "I measure the strength of a spirit by how much truth it can take. - Friedrich Nietzsche"),
@@ -526,7 +526,7 @@ struct PopularQuotesModel {
     
    static func getPopularQuotes(from Index: Int ) -> String {
      
-        return PopularQuotesModel.data[Index].quotes
+        return PopularQuotesModel.quotesList[Index].quotes
    
     }
     

@@ -7,29 +7,45 @@
 //
 
 import UIKit
+import CoreData
 
 // MARK:- Global favoriteList
 
-var favoriteList: [String] = []
+var favoriteList: [NSManagedObject] = []
 
 
 // MARK:- FavoriteListViewController
 
-class FavoriteListVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class FavoriteListVC: UIViewController,UITableViewDelegate,UITableViewDataSource, TableViewManager {
+   
+    
     
     // MARK:- IBOulets and Properties
     
     @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var FavoriteListTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
+    
+    let popular = PopularQuotesVC()
     
     
+   // let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+   
     // MARK:- viewDidLoad
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       favoriteListMessage()
+       showEmptyMessage()
+       popular.manager = self
+      
+    }
     
+    
+    func updateTableView() {
+        
+        DispatchQueue.main.async {
+            //self.tableView.reloadData()
+        }
     }
     
     
@@ -43,7 +59,7 @@ class FavoriteListVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     // MARK:- Favoritelist Message
     
-    func favoriteListMessage() {
+    func showEmptyMessage() {
         
         if favoriteList.isEmpty {
             messageLabel.text = "You don't have any favorites yet."
@@ -61,22 +77,34 @@ class FavoriteListVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.cellIdentifier)!
         cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.text = favoriteList[indexPath.row]
-    
+        
+        let favorites = favoriteList[indexPath.row]
+        cell.textLabel?.text = favorites.value(forKeyPath: "title") as? String
+        
         return cell
     }
     
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        if editingStyle == UITableViewCell.EditingStyle.delete {
+        if editingStyle == .delete {
+            
+            CoreDataModel.context.delete(favoriteList[indexPath.row])
             favoriteList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            CoreDataModel.saveContext()
             tableView.reloadData()
+            
+        
         }
         
-        UserDefault.saveFavorite() // this method will update and save the changes on tableview and favoritelist
+        
+        
+        
+        
+        
     }
+    
 }
 
 

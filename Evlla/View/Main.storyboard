@@ -85,6 +85,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" backgroundImage="folder" catalog="system"/>
                                 <connections>
+                                    <action selector="favoriteFolderPressed:" destination="AYn-05-f10" eventType="touchUpInside" id="4eq-IU-zBJ"/>
                                     <segue destination="iYN-4w-xXV" kind="presentation" identifier="popularToTableView" id="d2m-sh-mQA"/>
                                 </connections>
                             </button>
@@ -154,6 +155,7 @@
                     <connections>
                         <outlet property="contentView" destination="SXI-6y-KoC" id="j05-Jl-9E9"/>
                         <outlet property="favoriteButton" destination="VVS-qd-1IO" id="sX8-3a-BDl"/>
+                        <outlet property="folderButton" destination="a41-Wx-RFe" id="nps-DH-JUK"/>
                         <outlet property="quotesLabel" destination="Ynp-c0-eRA" id="PcN-GT-O2B"/>
                         <outlet property="shareButton" destination="unQ-3o-LU2" id="NdU-CK-NcG"/>
                     </connections>
@@ -229,8 +231,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="FavoriteListTableView" destination="jL1-g0-ZRa" id="bKA-b0-Khf"/>
                         <outlet property="messageLabel" destination="ajl-lX-iOm" id="B0P-rx-dV2"/>
+                        <outlet property="tableView" destination="jL1-g0-ZRa" id="bKA-b0-Khf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X0R-cj-QgT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -272,7 +274,7 @@
                                     <action selector="favoritePressed:" destination="xId-fH-7RC" eventType="touchUpInside" id="fsa-T4-QQP"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author Quotes Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uGa-k4-j31">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="randomQuotesLbl" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uGa-k4-j31">
                                 <rect key="frame" x="20" y="44" width="374" height="704"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -335,7 +337,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="u8Z-hB-QnA"/>
+        <segue reference="d2m-sh-mQA"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="authorImage.png" width="1200" height="2016"/>

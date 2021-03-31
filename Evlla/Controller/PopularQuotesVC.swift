@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 // MARK:- Class PopularVC
 
@@ -19,29 +20,59 @@ class PopularQuotesVC: UIViewController {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var quotesLabel: UILabel!
+    @IBOutlet weak var folderButton: UIButton!
+    
+    
+    var manager: TableViewManager?
+    
+    var userLikeQuotes = false
     
     var currentQuotesIndex = Int.random(in: 0..<500)
+    
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+   // var newTitle = Quotes()
     
     
     // MARK:- ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         NotificationCenter.sendMotivationQuotes(with: updatePopularQuotes())
-        favoriteList = UserDefault.saveFavoritelist()
         configurePageVC()
-        Favorite.showHeartFill(on: favoriteButton, of: currentQuotesIndex)
+        //Favorite.showHeartFill(on: favoriteButton, of: currentQuotesIndex)
+        
+        //fetchRequest()
+        
         
     }
     
+    
+    func fetchRequest() {
+        
+        let request: NSFetchRequest<Quotes> = Quotes.fetchRequest()
+        
+        do {
+            favoriteList = try context.fetch(request)
+            
+        } catch {
+            print(error)
+        }
+    }
+    
+
     // MARK:- UpdatePopularQuotes
     // update the PopularQuotesData.getFamousQuotes(from: currentQuotesIndex) to make it  tidy and shorter
     
     func updatePopularQuotes() -> String {
         let popularQuotes = PopularQuotesModel.getPopularQuotes(from: currentQuotesIndex)
-       // NotificationCenter.sendMotivationQuotes(with: popularQuotes)
         return popularQuotes
+    }
+    
+    
+    @IBAction func favoriteFolderPressed(_ sender: UIButton) {
+        
+        fetchRequest()
     }
     
     
@@ -50,7 +81,6 @@ class PopularQuotesVC: UIViewController {
     @IBAction func shareButtonPressed(_ sender: UIButton) {
         
         ShareModel.share(updatePopularQuotes(), viewController: self, sourceView: sender)
-        
     }
     
     
@@ -58,22 +88,16 @@ class PopularQuotesVC: UIViewController {
     
     @IBAction func favoritePressed(_ sender: UIButton) {
         
-        let userLikeQuotes = true
+        userLikeQuotes = !userLikeQuotes
         
-        if userLikeQuotes {
+        if userLikeQuotes == true {
+            CoreDataModel.saveQuotes(with: updatePopularQuotes())
+            Icons.setFavoriteIcon(on: favoriteButton)
             
-            Favorite.heartUnfill(on: favoriteButton)
-            if let index = favoriteList.firstIndex(of: updatePopularQuotes()) {
-                favoriteList.remove(at: index)
-                
-            } else {
-                
-                favoriteList.append(updatePopularQuotes())
-                Favorite.heartFill(on: favoriteButton)
-            }
+        } else {
+            CoreDataModel.removeQuotes()
+            Icons.setUnfavoriteIcon(on: favoriteButton)
         }
-        
-        UserDefault.saveFavorite() // this method will save the quotes in favoritelist
         
     }
     
@@ -118,8 +142,9 @@ extension PopularQuotesVC: UIPageViewControllerDelegate,UIPageViewControllerData
         if currentQuotesIndex == 0 { return nil }
         currentQuotesIndex -= 1
         
-        Favorite.heartUnfill(on: favoriteButton)
-        Favorite.showHeartFill(on: favoriteButton, of: currentQuotesIndex)
+        userLikeQuotes = false
+        Icons.setUnfavoriteIcon(on: favoriteButton)
+        Icons.showFavoriteIcon(on: favoriteButton, of: currentQuotesIndex)
         
         return popularQuotesVC(index: currentQuotesIndex)
     }
@@ -127,33 +152,13 @@ extension PopularQuotesVC: UIPageViewControllerDelegate,UIPageViewControllerData
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
-        if currentQuotesIndex >= PopularQuotesModel.data.count { return nil }
+        if currentQuotesIndex >= PopularQuotesModel.quotesList.count { return nil }
         currentQuotesIndex += 1
-        
-        Favorite.heartUnfill(on: favoriteButton)
-        Favorite.showHeartFill(on: favoriteButton, of: currentQuotesIndex)
+        userLikeQuotes = false
+        Icons.setUnfavoriteIcon(on: favoriteButton)
+        Icons.showFavoriteIcon(on: favoriteButton, of: currentQuotesIndex)
         
         return popularQuotesVC(index: currentQuotesIndex)
     }
     
 }
-
-
-
-
-
-
-
-
-    
-
-    
-    
-
-       
-       
-   
-
-
-
-
