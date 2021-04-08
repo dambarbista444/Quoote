@@ -12,11 +12,11 @@ import UIKit
 /*this method is created to alert user when they swape to right side because author quotes has only one side
  swape feature so this alert will stop they from keep swaping */
 
-struct AlertUser {
+struct AlertCenter {
     
-    static func alert(on viewController: UIViewController) {
+    static func alertUser(onViewController viewController: UIViewController) {
         
-        let alertController = UIAlertController(title: "Hello friends", message: "Author Quotes has only left swape feature. click, Okay to continue reading.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Hello There!", message: "Ramdom quotes has only left swape feature. Click, Okay to continue reading.", preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
         

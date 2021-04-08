@@ -59,13 +59,14 @@ class RandomQuotesVC: UIViewController {
             switch swipe.direction {
             
             case .left:
-                Icons.showAuthorFavoriteHeartFill(on: favoriteButton, of: randomQuotesLabel.text!)
+                IconData.showAuthorFavoriteHeartFill(on: favoriteButton, of: randomQuotesLabel.text!)
                 randomQuotes.fetchRandomQuotes()
                 userLikeQuotes = false
-                Icons.setUnfavoriteIcon(on: favoriteButton)
+                IconData.setHeartIcon(on: favoriteButton)
+                IconData.showHeartFillIcon(on: favoriteButton, quotes: randomQuotesLabel.text!)
                 
             case .right:
-                AlertUser.alert(on: self)
+                AlertCenter.alertUser(onViewController: self)
             default:
                 break
             }
@@ -89,11 +90,12 @@ class RandomQuotesVC: UIViewController {
         
         if userLikeQuotes == true {
             CoreDataModel.saveQuotes(with: randomQuotesLabel.text!)
-            Icons.setFavoriteIcon(on: favoriteButton)
+            IconData.setHeartFillIcon(on: favoriteButton)
             
         } else {
             CoreDataModel.removeQuotes()
-            Icons.setUnfavoriteIcon(on: favoriteButton)
+            IconData.setHeartIcon(on: favoriteButton)
+            
         }
     }
     

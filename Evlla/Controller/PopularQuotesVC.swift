@@ -9,10 +9,7 @@
 import UIKit
 import CoreData
 
-// MARK:- Class PopularVC
-
 class PopularQuotesVC: UIViewController {
-    
     
     // MARK:- IBOutlets and Properties
     
@@ -22,16 +19,9 @@ class PopularQuotesVC: UIViewController {
     @IBOutlet weak var quotesLabel: UILabel!
     @IBOutlet weak var folderButton: UIButton!
     
-    
-    var manager: TableViewManager?
-    
     var userLikeQuotes = false
-    
     var currentQuotesIndex = Int.random(in: 0..<500)
-    
-    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-   // var newTitle = Quotes()
-    
+    var icon = IconData()
     
     // MARK:- ViewDidLoad
     
@@ -40,28 +30,11 @@ class PopularQuotesVC: UIViewController {
         
         NotificationCenter.sendMotivationQuotes(with: updatePopularQuotes())
         configurePageVC()
-        //Favorite.showHeartFill(on: favoriteButton, of: currentQuotesIndex)
-        
-        //fetchRequest()
-        
-        
-    }
-    
-    
-    func fetchRequest() {
-        
-        let request: NSFetchRequest<Quotes> = Quotes.fetchRequest()
-        
-        do {
-            favoriteList = try context.fetch(request)
-            
-        } catch {
-            print(error)
-        }
-    }
-    
 
-    // MARK:- UpdatePopularQuotes
+        CoreDataModel.fetchQuotes()
+    }
+    
+    
     // update the PopularQuotesData.getFamousQuotes(from: currentQuotesIndex) to make it  tidy and shorter
     
     func updatePopularQuotes() -> String {
@@ -72,7 +45,7 @@ class PopularQuotesVC: UIViewController {
     
     @IBAction func favoriteFolderPressed(_ sender: UIButton) {
         
-        fetchRequest()
+        CoreDataModel.fetchQuotes()
     }
     
     
@@ -92,17 +65,14 @@ class PopularQuotesVC: UIViewController {
         
         if userLikeQuotes == true {
             CoreDataModel.saveQuotes(with: updatePopularQuotes())
-            Icons.setFavoriteIcon(on: favoriteButton)
+            IconData.setHeartFillIcon(on: favoriteButton)
             
         } else {
             CoreDataModel.removeQuotes()
-            Icons.setUnfavoriteIcon(on: favoriteButton)
+            IconData.setHeartIcon(on: favoriteButton)
         }
-        
     }
     
-    
-    // MARK:- PageViewControll / Scroll
     
     func configurePageVC() {
         
@@ -114,22 +84,19 @@ class PopularQuotesVC: UIViewController {
         pageVC.didMove(toParent: self)
         contentView.addSubview(pageVC.view)
         
-        guard let startingVC = popularQuotesVC(index: currentQuotesIndex) else { return }
+        guard let startingVC = displayPopularQuotes(by: currentQuotesIndex) else { return }
         pageVC.setViewControllers([startingVC], direction: .forward, animated: true, completion: nil)
     }
     
     
-    // MARK:- PopularQuoteVC
     // this method will run the qotes on popular Quotes when scroll
-    
-    func popularQuotesVC(index: Int) -> UIViewController? {
+    func displayPopularQuotes(by currentPageIndex: Int) -> UIViewController? {
         
-        let textViewController  = TextViewController(pageIndex: currentQuotesIndex, pageText: updatePopularQuotes())
+        let textViewController  = TextViewController(pageIndex: currentPageIndex, pageText: updatePopularQuotes())
         quotesLabel.text        = textViewController.pageText
         
         return textViewController
     }
-    
 }
 
 
@@ -141,12 +108,11 @@ extension PopularQuotesVC: UIPageViewControllerDelegate,UIPageViewControllerData
         
         if currentQuotesIndex == 0 { return nil }
         currentQuotesIndex -= 1
+        IconData.setHeartIcon(on: favoriteButton)
+        IconData.showHeartFillIcon(on: favoriteButton, quotes: updatePopularQuotes())
         
         userLikeQuotes = false
-        Icons.setUnfavoriteIcon(on: favoriteButton)
-        Icons.showFavoriteIcon(on: favoriteButton, of: currentQuotesIndex)
-        
-        return popularQuotesVC(index: currentQuotesIndex)
+        return displayPopularQuotes(by: currentQuotesIndex)
     }
     
     
@@ -155,10 +121,10 @@ extension PopularQuotesVC: UIPageViewControllerDelegate,UIPageViewControllerData
         if currentQuotesIndex >= PopularQuotesModel.quotesList.count { return nil }
         currentQuotesIndex += 1
         userLikeQuotes = false
-        Icons.setUnfavoriteIcon(on: favoriteButton)
-        Icons.showFavoriteIcon(on: favoriteButton, of: currentQuotesIndex)
+        IconData.setHeartIcon(on: favoriteButton)
+        IconData.showHeartFillIcon(on: favoriteButton, quotes: updatePopularQuotes())
         
-        return popularQuotesVC(index: currentQuotesIndex)
+        return displayPopularQuotes(by: currentQuotesIndex)
     }
     
 }

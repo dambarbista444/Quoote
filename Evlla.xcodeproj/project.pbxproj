@@ -11,7 +11,6 @@
 		E1031E2124BD40290094A4A9 /* RandomPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1031E2024BD40280094A4A9 /* RandomPageVC.swift */; };
 		E1031E2324BD404C0094A4A9 /* PopularQuotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1031E2224BD404C0094A4A9 /* PopularQuotesVC.swift */; };
 		E1031E2524BD40AB0094A4A9 /* RandomQuotesAPIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1031E2424BD40AB0094A4A9 /* RandomQuotesAPIData.swift */; };
-		E1031E2C24BD41440094A4A9 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1031E2724BD41440094A4A9 /* Identifier.swift */; };
 		E1031E2D24BD41440094A4A9 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1031E2824BD41440094A4A9 /* TextViewController.swift */; };
 		E1031E2E24BD41440094A4A9 /* PopularQuotesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1031E2924BD41440094A4A9 /* PopularQuotesModel.swift */; };
 		E1031E3024BD41440094A4A9 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1031E2B24BD41440094A4A9 /* NotificationCenter.swift */; };
@@ -27,10 +26,10 @@
 		E13F450B24C232A20050EBC0 /* RandomQuotesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13F450A24C232A20050EBC0 /* RandomQuotesModel.swift */; };
 		E13F450D24C2337C0050EBC0 /* RandomQuotesManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13F450C24C2337C0050EBC0 /* RandomQuotesManagerDelegate.swift */; };
 		E142EEF025F892B900B69D47 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E142EEEF25F892B900B69D47 /* CoreDataModel.swift */; };
-		E144C26E24C142A00089287D /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E144C26D24C142A00089287D /* Icons.swift */; };
+		E144C26E24C142A00089287D /* IconData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E144C26D24C142A00089287D /* IconData.swift */; };
 		E144C27024C153DF0089287D /* ShareModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E144C26F24C153DF0089287D /* ShareModel.swift */; };
 		E144C27224C15DA40089287D /* PopularQuotesDatal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E144C27124C15DA40089287D /* PopularQuotesDatal.swift */; };
-		E144C27424C1680C0089287D /* AlertUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E144C27324C1680C0089287D /* AlertUser.swift */; };
+		E144C27424C1680C0089287D /* AlertCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E144C27324C1680C0089287D /* AlertCenter.swift */; };
 		E1502DE525FA9355007FB2E9 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1502DE325FA9355007FB2E9 /* DataModel.xcdatamodeld */; };
 		E188FD5C24C881EE000449D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E188FD5B24C881EE000449D8 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -40,7 +39,6 @@
 		E1031E2024BD40280094A4A9 /* RandomPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomPageVC.swift; sourceTree = "<group>"; };
 		E1031E2224BD404C0094A4A9 /* PopularQuotesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularQuotesVC.swift; sourceTree = "<group>"; };
 		E1031E2424BD40AB0094A4A9 /* RandomQuotesAPIData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomQuotesAPIData.swift; sourceTree = "<group>"; };
-		E1031E2724BD41440094A4A9 /* Identifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
 		E1031E2824BD41440094A4A9 /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		E1031E2924BD41440094A4A9 /* PopularQuotesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularQuotesModel.swift; sourceTree = "<group>"; };
 		E1031E2B24BD41440094A4A9 /* NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
@@ -57,10 +55,10 @@
 		E13F450A24C232A20050EBC0 /* RandomQuotesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomQuotesModel.swift; sourceTree = "<group>"; };
 		E13F450C24C2337C0050EBC0 /* RandomQuotesManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomQuotesManagerDelegate.swift; sourceTree = "<group>"; };
 		E142EEEF25F892B900B69D47 /* CoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
-		E144C26D24C142A00089287D /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
+		E144C26D24C142A00089287D /* IconData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconData.swift; sourceTree = "<group>"; };
 		E144C26F24C153DF0089287D /* ShareModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareModel.swift; sourceTree = "<group>"; };
 		E144C27124C15DA40089287D /* PopularQuotesDatal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularQuotesDatal.swift; sourceTree = "<group>"; };
-		E144C27324C1680C0089287D /* AlertUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUser.swift; sourceTree = "<group>"; };
+		E144C27324C1680C0089287D /* AlertCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCenter.swift; sourceTree = "<group>"; };
 		E1502DE425FA9355007FB2E9 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		E188FD5B24C881EE000449D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1D03EF525F7CFD8000FECAE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -139,13 +137,12 @@
 		E139384B24BD2CCA0054F31B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E1031E2724BD41440094A4A9 /* Identifier.swift */,
 				E1031E2B24BD41440094A4A9 /* NotificationCenter.swift */,
 				E144C27124C15DA40089287D /* PopularQuotesDatal.swift */,
 				E1031E2924BD41440094A4A9 /* PopularQuotesModel.swift */,
-				E144C26D24C142A00089287D /* Icons.swift */,
+				E144C26D24C142A00089287D /* IconData.swift */,
 				E144C26F24C153DF0089287D /* ShareModel.swift */,
-				E144C27324C1680C0089287D /* AlertUser.swift */,
+				E144C27324C1680C0089287D /* AlertCenter.swift */,
 				E1E03C4925F8331600D58082 /* Storage */,
 				E1C4C53825F8054F00DA80E3 /* Networking */,
 			);
@@ -261,7 +258,7 @@
 				E1502DE525FA9355007FB2E9 /* DataModel.xcdatamodeld in Sources */,
 				E13F450D24C2337C0050EBC0 /* RandomQuotesManagerDelegate.swift in Sources */,
 				E1031E2D24BD41440094A4A9 /* TextViewController.swift in Sources */,
-				E144C26E24C142A00089287D /* Icons.swift in Sources */,
+				E144C26E24C142A00089287D /* IconData.swift in Sources */,
 				E1031E2324BD404C0094A4A9 /* PopularQuotesVC.swift in Sources */,
 				E139385124BD2D580054F31B /* FavoriteListVC.swift in Sources */,
 				E144C27224C15DA40089287D /* PopularQuotesDatal.swift in Sources */,
@@ -270,10 +267,9 @@
 				E139384F24BD2D470054F31B /* RandomQuotesVC.swift in Sources */,
 				E1031E2E24BD41440094A4A9 /* PopularQuotesModel.swift in Sources */,
 				E1031E3024BD41440094A4A9 /* NotificationCenter.swift in Sources */,
-				E1031E2C24BD41440094A4A9 /* Identifier.swift in Sources */,
 				E139382A24BD208F0054F31B /* AppDelegate.swift in Sources */,
 				E1031E2524BD40AB0094A4A9 /* RandomQuotesAPIData.swift in Sources */,
-				E144C27424C1680C0089287D /* AlertUser.swift in Sources */,
+				E144C27424C1680C0089287D /* AlertCenter.swift in Sources */,
 				E142EEF025F892B900B69D47 /* CoreDataModel.swift in Sources */,
 				E144C27024C153DF0089287D /* ShareModel.swift in Sources */,
 				E139382C24BD208F0054F31B /* SceneDelegate.swift in Sources */,

@@ -12,9 +12,11 @@ import UIKit
 
 struct CoreDataModel {
     
+    
     static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     static var newQuotes: Quotes?
+    
     
     static func saveQuotes(with quotes: String) {
         
@@ -32,13 +34,14 @@ struct CoreDataModel {
         
         for object in favoriteList {
             if object == newQuotes {
+                if let index = favoriteList.firstIndex(of: object) {
+                    favoriteList.remove(at: index)
+                }
                 context.delete(object)
             }
         }
-        
         saveContext()
     }
-    
     
     
     static func saveContext() {
@@ -47,21 +50,24 @@ struct CoreDataModel {
             try context.save()
             
         } catch {
-            print("Failure to save quotes: \(error)")
+            print("Failure to save quotes: KFG\(error)")
         }
         
     }
     
     
-    //    static func fetchQuotes() {
-    //
-    //        let request: NSFetchRequest<SaveQuotes> = SaveQuotes.fetchRequest()
-    //
-    //        do {
-    //            favoriteList = try context.fetch(request)
-    //        } catch {
-    //            print("Failure to fetch quotes: \(error)")
-    //        }
-    //    }
+    static func fetchQuotes() {
+        
+        let request: NSFetchRequest<Quotes> = Quotes.fetchRequest()
+        
+        do {
+            favoriteList = try context.fetch(request)
+            
+        } catch {
+            print("Failure to fetch quotes: \(error)")
+        }
+    }
     
 }
+
+

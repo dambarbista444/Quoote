@@ -11,44 +11,30 @@ import CoreData
 
 // MARK:- Global favoriteList
 
+/* I am making favoriteList golbal variable so i could store and display
+ user favorites quotes from both random and popular viewController
+ */
+
 var favoriteList: [NSManagedObject] = []
-
-
-// MARK:- FavoriteListViewController
-
-class FavoriteListVC: UIViewController,UITableViewDelegate,UITableViewDataSource, TableViewManager {
+ 
+class FavoriteListVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
    
-    
-    
     // MARK:- IBOulets and Properties
     
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    let popular = PopularQuotesVC()
     
-    
-   // let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-   
     // MARK:- viewDidLoad
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
        showEmptyMessage()
-       popular.manager = self
-      
+       
     }
     
-    
-    func updateTableView() {
-        
-        DispatchQueue.main.async {
-            //self.tableView.reloadData()
-        }
-    }
-    
-    
+   
     // MARK:- Done Button
 
     @IBAction func donePressed(_ sender: UIButton) {
@@ -73,12 +59,12 @@ class FavoriteListVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         return favoriteList.count
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.cellIdentifier)!
-        cell.textLabel?.numberOfLines = 0
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteList" )!
         let favorites = favoriteList[indexPath.row]
+        cell.textLabel?.numberOfLines = 0
         cell.textLabel?.text = favorites.value(forKeyPath: "title") as? String
         
         return cell
@@ -94,15 +80,7 @@ class FavoriteListVC: UIViewController,UITableViewDelegate,UITableViewDataSource
             tableView.deleteRows(at: [indexPath], with: .automatic)
             CoreDataModel.saveContext()
             tableView.reloadData()
-            
-        
         }
-        
-        
-        
-        
-        
-        
     }
     
 }
