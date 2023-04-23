@@ -31,7 +31,6 @@ class FavoriteListVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         super.viewDidLoad()
         
        showEmptyMessage()
-       
     }
     
    

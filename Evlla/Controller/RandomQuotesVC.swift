@@ -28,7 +28,6 @@ class RandomQuotesVC: UIViewController {
         randomQuotes.randomQuotesManager = self
         configureSwipe()
         showNetworkErrorMessage()
-        
     }
     
     // MARK:- UISwipeGestureRecognizer
@@ -41,9 +40,6 @@ class RandomQuotesVC: UIViewController {
         leftSwipe.direction = .left
         view.addGestureRecognizer(rightSwipe)
         view.addGestureRecognizer(leftSwipe)
-        
-        
-        
     }
     
     // If there is no internet connection or other issue
@@ -59,12 +55,11 @@ class RandomQuotesVC: UIViewController {
             switch swipe.direction {
             
             case .left:
-                IconData.showAuthorFavoriteHeartFill(on: favoriteButton, of: randomQuotesLabel.text!)
                 randomQuotes.fetchRandomQuotes()
                 userLikeQuotes = false
+                /// Setting to heart icon after user like quotes.
                 IconData.setHeartIcon(on: favoriteButton)
-                IconData.showHeartFillIcon(on: favoriteButton, quotes: randomQuotesLabel.text!)
-                
+    
             case .right:
                 AlertCenter.alertUser(onViewController: self)
             default:
@@ -73,14 +68,13 @@ class RandomQuotesVC: UIViewController {
         }
     }
     
+    
     // MARK:- Share Pressed / UIActivityViewController
     
-    
     @IBAction func sharePressed(_ sender: UIButton) {
-        
         ShareModel.share(randomQuotesLabel.text!, viewController: self, sourceView: sender)
-        
     }
+    
     
     // MARK:- Favorite Pressed
     
@@ -95,12 +89,10 @@ class RandomQuotesVC: UIViewController {
         } else {
             CoreDataModel.removeQuotes()
             IconData.setHeartIcon(on: favoriteButton)
-            
         }
     }
     
 }
-
 
 
 // MARK:- AuthorQuotesManager Delegate

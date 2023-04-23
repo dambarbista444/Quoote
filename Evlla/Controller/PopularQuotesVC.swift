@@ -21,7 +21,6 @@ class PopularQuotesVC: UIViewController {
     
     var userLikeQuotes = false
     var currentQuotesIndex = Int.random(in: 0..<500)
-    var icon = IconData()
     
     // MARK:- ViewDidLoad
     
@@ -30,29 +29,20 @@ class PopularQuotesVC: UIViewController {
         
         NotificationCenter.sendMotivationQuotes(with: updatePopularQuotes())
         configurePageVC()
-
         CoreDataModel.fetchQuotes()
     }
     
     
-    // update the PopularQuotesData.getFamousQuotes(from: currentQuotesIndex) to make it  tidy and shorter
-    
+    /// update the PopularQuotesData.getFamousQuotes(from: currentQuotesIndex) to make it  tidy and shorter
     func updatePopularQuotes() -> String {
         let popularQuotes = PopularQuotesModel.getPopularQuotes(from: currentQuotesIndex)
         return popularQuotes
     }
     
-    
-    @IBAction func favoriteFolderPressed(_ sender: UIButton) {
-        
-        CoreDataModel.fetchQuotes()
-    }
-    
-    
+
     // MARK:- Share Pressed
     
     @IBAction func shareButtonPressed(_ sender: UIButton) {
-        
         ShareModel.share(updatePopularQuotes(), viewController: self, sourceView: sender)
     }
     
@@ -76,7 +66,7 @@ class PopularQuotesVC: UIViewController {
     
     func configurePageVC() {
         
-        guard  let pageVC = storyboard?.instantiateViewController(withIdentifier: String(describing: RandomPageVC.self)) as? RandomPageVC else { return }
+        guard  let pageVC = storyboard?.instantiateViewController(withIdentifier: String(describing: PopularPageVC.self)) as? PopularPageVC else { return }
         
         pageVC.delegate     = self
         pageVC.dataSource   = self
@@ -92,10 +82,10 @@ class PopularQuotesVC: UIViewController {
     // this method will run the qotes on popular Quotes when scroll
     func displayPopularQuotes(by currentPageIndex: Int) -> UIViewController? {
         
-        let textViewController  = TextViewController(pageIndex: currentPageIndex, pageText: updatePopularQuotes())
-        quotesLabel.text        = textViewController.pageText
+        let textVC  = TextViewController(pageIndex: currentPageIndex, pageText: updatePopularQuotes())
+        quotesLabel.text = textVC.pageText
         
-        return textViewController
+        return textVC
     }
 }
 
@@ -108,7 +98,9 @@ extension PopularQuotesVC: UIPageViewControllerDelegate,UIPageViewControllerData
         
         if currentQuotesIndex == 0 { return nil }
         currentQuotesIndex -= 1
+        /// Setting to heart icon after user like quotes.
         IconData.setHeartIcon(on: favoriteButton)
+        /// I want to show heartFill icon when current quotes is already in their favorites.
         IconData.showHeartFillIcon(on: favoriteButton, quotes: updatePopularQuotes())
         
         userLikeQuotes = false
@@ -121,7 +113,9 @@ extension PopularQuotesVC: UIPageViewControllerDelegate,UIPageViewControllerData
         if currentQuotesIndex >= PopularQuotesModel.quotesList.count { return nil }
         currentQuotesIndex += 1
         userLikeQuotes = false
+        /// Setting to heart icon after user like quotes.
         IconData.setHeartIcon(on: favoriteButton)
+        /// I want to show heartFill icon when current quotes is already in their favorites.
         IconData.showHeartFillIcon(on: favoriteButton, quotes: updatePopularQuotes())
         
         return displayPopularQuotes(by: currentQuotesIndex)

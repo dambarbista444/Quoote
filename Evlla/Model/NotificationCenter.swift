@@ -12,17 +12,13 @@ import NotificationCenter
 // this method will handle to send notification to user 
 
 struct NotificationCenter {
-    
     static func sendMotivationQuotes(with quotes: String) {
-        
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-            
             if error != nil {
                 print("Access Denied")
             }
         }
-        
         // Content of Notification
         let content             = UNMutableNotificationContent()
         content.title           = "Morning Motivation"
@@ -46,5 +42,4 @@ struct NotificationCenter {
             }
         }
     }
-    
 }

@@ -20,7 +20,6 @@ class QuotesVC: UIViewController {
         super.viewDidLoad()
         
         authorQuotesView.isHidden = true
-        
     }
     
     

@@ -12,12 +12,9 @@ import CoreData
 
 // this will hande user favorites to fill and unfill the heart button s
 
-
 struct IconData {
     
-    
     static func setHeartIcon(on favoriteButton: UIButton) {
-        
         favoriteButton.setBackgroundImage(UIImage(systemName: "heart"), for: .normal)
     }
     
@@ -44,15 +41,6 @@ struct IconData {
         }
     }
     
-    static func showAuthorFavoriteHeartFill(on favoriteButton: UIButton, of AuthorFavoriteQuotes: String) {
-        
-        //        if favoriteList.contains(AuthorFavoriteQuotes) {
-        //
-        //            favoriteButton.setBackgroundImage(UIImage(systemName: Identifier.heartFill), for: .normal)
-        //
-        //        }
-        
-    }
 }
 
 

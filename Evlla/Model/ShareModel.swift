@@ -14,9 +14,7 @@ import UIKit
  changing to (sourceView: UIButton) now working as expected on all devices  */
 
 struct ShareModel {
-    
     static func share(_ quotes: String, viewController: UIViewController, sourceView: UIButton ) {
-
         let activityController = UIActivityViewController(activityItems: [quotes], applicationActivities: nil)
         activityController.popoverPresentationController?.sourceView = sourceView
        viewController.present(activityController,animated: true, completion: nil)

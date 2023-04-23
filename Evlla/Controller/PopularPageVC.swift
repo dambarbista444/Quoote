@@ -1,5 +1,5 @@
 //
-//  RandomPageVC.swift
+//  pageViewContrller.swift
 //  Evlla
 //
 //  Created by Dambar Bista on 5/6/20.
@@ -11,7 +11,7 @@ import UIKit
 
 // this pageViewController class for scroll the data on popular quotes
 // here i am doing nothing i called the storyboad idetifier of pageViewController on PopularViewController
-class RandomPageVC: UIPageViewController {
+class PopularPageVC: UIPageViewController {
    
   
 }

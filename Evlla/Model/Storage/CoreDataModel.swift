@@ -11,12 +11,8 @@ import CoreData
 import UIKit
 
 struct CoreDataModel {
-    
-    
     static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     static var newQuotes: Quotes?
-    
     
     static func saveQuotes(with quotes: String) {
         
