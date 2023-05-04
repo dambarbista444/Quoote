@@ -30,7 +30,7 @@ struct CatagoryTitleView: View {
     
     var body: some View {
         Text(title)
-            .font(.system(size: 20))
+            .font(.system(size: 18))
             .fontWeight(.semibold)
             .leftAligned()
             .padding(.leading, 20)

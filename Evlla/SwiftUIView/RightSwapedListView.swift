@@ -10,8 +10,15 @@ import SwiftUI
 
 struct RightSwapedListView: View {
     @Environment(\.presentationMode) var presentMode
-
+    
     var quotes: [String]
+    
+    @State var favoritesTaped: [Bool]
+    
+    init(quotes: [String]) {
+        self.quotes = quotes
+        self._favoritesTaped = State(initialValue: Array(repeating: false, count: quotes.count))
+    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -25,28 +32,33 @@ struct RightSwapedListView: View {
                     }
                 }
                 .padding(.horizontal)
-                
                 ScrollView(showsIndicators: false) {
-                    ForEach(quotes, id: \.self) { quote in
+                    
+                    ForEach(quotes.indices, id: \.self) { index in
                         ZStack {
                             Rectangle()
-                                .foregroundColor(.blue)
-                                .cornerRadius(20)
+                                .cornerRadius(10)
                                 .frame(width: .infinity, height: 150)
                                 .padding(.horizontal)
-                            
+                                .foregroundColor(Color.white)
+                                .shadow(radius: 5)
                             HStack {
-                                Text(quote)
+                                Text(quotes[index])
+                                    .font(.system(size: 18))
                                     .frame(width: geometry.size.width * 0.70)
                                 Button {
-                                    // when press this button saved quotes
+                                    favoritesTaped[index].toggle()
+                                    if favoritesTaped[index] {
+                                        CoreDataModel.saveQuotes(with: quotes[index])
+                                    } else {
+                                        CoreDataModel.removeQuotes()
+                                    }
                                 } label: {
-                                    Image(systemName: "heart")
+                                    Image(systemName: favoritesTaped[index] ? "heart.fill" : "heart")
                                         .resizable()
                                         .frame(width: 30, height: 30)
                                         .scaledToFit()
-                                        .foregroundColor(.white)
-                                    
+                                        .foregroundColor(.black)
                                 }
                             }
                         }
@@ -60,6 +72,6 @@ struct RightSwapedListView: View {
 
 struct RightSwapedListView_Previews: PreviewProvider {
     static var previews: some View {
-        RightSwapedListView(quotes: [])
+        RightSwapedListView(quotes: ["hello this is demo text", "hello this is demo"])
     }
 }

@@ -15,7 +15,6 @@ struct CoreDataModel {
     static var newQuotes: Quotes?
     
     static func saveQuotes(with quotes: String) {
-        
         newQuotes = Quotes(context: context)
         
         if let safeQuotes = newQuotes {
@@ -25,9 +24,7 @@ struct CoreDataModel {
         saveContext()
     }
     
-    
     static func removeQuotes() {
-        
         for object in favoriteList {
             if object == newQuotes {
                 if let index = favoriteList.firstIndex(of: object) {
@@ -39,31 +36,24 @@ struct CoreDataModel {
         saveContext()
     }
     
-    
     static func saveContext() {
-        
         do {
             try context.save()
             
         } catch {
             print("Failure to save quotes: KFG\(error)")
         }
-        
     }
     
-    
     static func fetchQuotes() {
-        
         let request: NSFetchRequest<Quotes> = Quotes.fetchRequest()
         
         do {
             favoriteList = try context.fetch(request)
-            
         } catch {
             print("Failure to fetch quotes: \(error)")
         }
     }
-    
 }
 
 

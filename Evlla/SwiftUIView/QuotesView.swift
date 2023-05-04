@@ -11,6 +11,7 @@ import CardStack
 
 public struct QuotesView: View {
     @Environment(\.presentationMode) var presentMode
+    @State private var isShowingPopup = false
   
     var data: [String]
     var name: String
@@ -22,16 +23,16 @@ public struct QuotesView: View {
         VStack {
                 CardStack(
                     direction: LeftRight.direction,
-                    data: data,
-                    onSwipe: { card, direction in
+                    data: data.shuffled(),
+                    onSwipe: { quote, direction in
                       // to do
                         if direction == .right {
-                            rightSwapedQuotes.append(card)
+                            rightSwapedQuotes.append(quote)
                         } else {
                             // Left
                             // Save quotes to favorite list
+                            CoreDataModel.saveQuotes(with: quote)
                         }
-                        
                     },
                     content: { quote, _, _ in
                         CardView(name: name, text: quote)
@@ -39,8 +40,7 @@ public struct QuotesView: View {
                 )
                 .padding(.top, 100)
                 .environment(\.cardStackConfiguration, CardStackConfiguration(
-                    maxVisibleCards: 4,
-                    swipeThreshold: 0.10
+                    maxVisibleCards: 4
                 ))
                 
             HStack {

@@ -12,6 +12,9 @@ struct CardView: View {
     var name: String
     var text: String
     
+    @State var showAlertMessage = false
+    
+    
     var body: some View {
         GeometryReader { geometry in
             VStack() {
@@ -26,24 +29,33 @@ struct CardView: View {
                     Text(name)
                         .foregroundColor(.black)
                         .font(.headline)
-              
+                    
                     Button {
-                        print("saved")
+                        showAlertMessage = true
                     } label: {
                         Image(systemName: "questionmark.circle")
                             .resizable()
                             .frame(width: 20, height: 20)
                             .scaledToFit()
                     }
+                    .alert("Message", isPresented: $showAlertMessage) {
+                        // No action required
+                    } message: {
+                        Text(LocalizedString.howToSaveFavoriteText)
+                    }
                     Spacer()
                 }
+                
                 .frame(height: geometry.size.height * 0.20 )
                 .frame(maxWidth: .infinity)
             }
             .background(Color.white)
             .cornerRadius(10)
             .shadow(radius: 5)
+            
+            
         }
+        
         .padding([.top], 50)
         .padding([.leading, .trailing], 20)
     }

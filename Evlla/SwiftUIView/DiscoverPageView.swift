@@ -20,6 +20,8 @@ struct DiscoverPageView: View {
     var relationship = Relationship()
     var inspiration = Inspiration()
     
+    @State var showFavoriteModal = false
+    
 
     @State var selectedItem: String? = nil
     
@@ -87,13 +89,26 @@ struct DiscoverPageView: View {
                     CatagoryTitleView(title: "Inspiration")
                     TopImageBottomTitleGridView(catagories: inspiration.catagories)
                     
-                    // MARK: - Jokes
-                    CatagoryTitleView(title: "Jokes")
-                    TopImageBottomTitleGridView(catagories: inspiration.catagories)
-                    
                 }
             }
             .navigationTitle(LocalizedString.discoverTitleText)
+            .toolbar {
+                Button {
+                    showFavoriteModal.toggle()
+                } label: {
+                    HStack(spacing: 1) {
+                        Text("Favorites")
+                        Image(systemName: "heart.fill")
+                    }
+                    .foregroundColor(Color.black)
+                }
+            }
+            .sheet(isPresented: $showFavoriteModal) {
+                FavoriteListView()
+            }
+        }
+        .onAppear() {
+            CoreDataModel.fetchQuotes()
         }
         
         
