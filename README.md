@@ -1,5 +1,3 @@
-# Evlla
-![Idea came to life  yey (1)](https://user-images.githubusercontent.com/60531116/106702119-d3184080-65b5-11eb-8ae9-152a1bf4e020.gif)
+![Screenshot 2023-05-23 at 10 03 57 PM](https://github.com/dambarbista444/Quoote/assets/60531116/fbcebac4-7d31-491d-b028-c9a1dec01461)
 
-![Evlla](https://user-images.githubusercontent.com/60531116/106704310-e62d0f80-65b9-11eb-8a0e-16a7d63f530d.png)
 
